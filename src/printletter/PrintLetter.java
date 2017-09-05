@@ -116,6 +116,7 @@ public class PrintLetter {
         LetterPattern[getLN('B')] = getLetterB();
         LetterPattern[getLN('C')] = getLetterC();
         LetterPattern[getLN('D')] = getLetterD();
+        LetterPattern[getLN('E')] = getLetterE();
         //....
     }
 
@@ -201,7 +202,26 @@ public class PrintLetter {
                             ,{X, X, X, X, X, X, O, O, O, O}
                             ,{O, O, O, O, O, O, O, O, O, O}
                             ,{O, O, O, O, O, O, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}                        };
+                            ,{O, O, O, O, O, O, O, O, O, O}                        
+                        };
+        return L;
+    }
+
+    private static boolean[][] getLetterE() {
+
+        boolean O = false, X = true;
+        boolean L[][] = {
+                            {X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, X, X, X, X, O, O, O, O}
+                        };
         return L;
     }
 

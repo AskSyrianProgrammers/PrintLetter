@@ -18,7 +18,7 @@ public class Main {
                 //currently its only support 5 letters [space], A B C D, if you add any other letter will have NullPointerException Search for TODO:
                 //small letter takes same value of capital letter :
                 
-                print("ABCD a b c d", '@');
+                print("ABCDE a b c d e", 'E');
 
             } catch (Exception e) {
                 System.out.println(e);
