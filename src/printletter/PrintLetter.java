@@ -1,24 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package printletter;
 
-import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  *
- * @author amharb
+ * @author amerharb
  */
 public class PrintLetter {
 
     final static int NoL = 27; // number of letters 0 = Space, 1 = A, 2 = B, 3 = C ...etc
     final static int XL = 10; // number of X pixels
-    final static int YL = 10; // number of X pixels, **hint the array will be filled manually 10 by 10 
+    final static int YL = 10; // number of Y pixels, **hint the array will be filled manually 10 by 10 
 
     final static boolean[][][] LetterPattern = new boolean[NoL][][];
     final static Map<Character, Integer> LN = new HashMap<>(); //Letter Number it give the number for spesific char
@@ -122,6 +115,7 @@ public class PrintLetter {
         LetterPattern[getLN('A')] = getLetterA();
         LetterPattern[getLN('B')] = getLetterB();
         LetterPattern[getLN('C')] = getLetterC();
+        LetterPattern[getLN('D')] = getLetterD();
         //....
     }
 
@@ -191,7 +185,27 @@ public class PrintLetter {
         return L;
     }
 
-    //TODO: do the rest letters D - Z
+    private static boolean[][] getLetterD() {
+
+        boolean O = false, X = true;
+        boolean L[][] = {
+                            {X, X, X, X, X, X, O, O, O, O}
+                            ,{X, X, X, X, X, X, X, O, O, O}
+                            ,{X, X, O, O, X, X, X, X, O, O}
+                            ,{X, X, O, O, O, X, X, X, O, O}
+                            ,{X, X, O, O, O, O, X, X, O, O}
+                            ,{X, X, O, O, O, O, X, X, O, O}
+                            ,{X, X, O, O, O, X, X, X, O, O}
+                            ,{X, X, O, O, X, X, X, X, O, O}
+                            ,{X, X, X, X, X, X, X, O, O, O}
+                            ,{X, X, X, X, X, X, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}                        };
+        return L;
+    }
+
+    //TODO: do the rest letters E - Z
     //...
     private static boolean[][] getLetterRandom() {
 
