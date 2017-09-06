@@ -19,12 +19,12 @@ public class Main {
                 //Search for "//TODO:" to suuport other letters 
                 //small letter takes same value of capital letter :
 
-                //print the word using '*'
-                print("ABCDEF a b-d?e f", '*');
+                //print the word using '#'
+                print("ABCDEF a b-aaa f", '#');
                 System.out.println();
                 
                 //print the word using each letter shape
-                printWithSameChar("ABCDEF a b-d e f");
+                //printWithSameChar("ABCDEF a b-d e f");
 
             } catch (Exception e) {
                 System.out.println(e);
@@ -38,6 +38,7 @@ public class Main {
         boolean pat[][] = PrintLetter.getWordpattern(word);
 
         //assuming all char comes at the same width
+        //TODO: this will return error if the char width are diffreant
         int cw = pat[0].length / word.length();
  
         for (boolean[] line : pat) {

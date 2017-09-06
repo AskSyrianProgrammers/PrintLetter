@@ -9,9 +9,9 @@ import java.util.Map;
  */
 public class PrintLetter {
 
-    final static int XL = 10; // number of X pixels
-    final static int YL = 10; // number of Y pixels, **hint the array will be filled manually 10 by 10 
-
+    final static int defaultX = 10;
+    final static int defaultY = 10;
+    
     final static Map<Character, boolean[][]> LP = new HashMap<>(); //LP is Letter Pattenr 2D array of boolean for spesific char
 
     static {
@@ -27,21 +27,42 @@ public class PrintLetter {
 
     static boolean[][] getWordpattern(String word) {
 
-        boolean wordPattern[][] = new boolean[XL][YL * word.length()];
-
-        boolean ls[][][] = new boolean[word.length()][XL][YL];
+        //boolean wordPattern[][];// = new boolean[XL][YL * word.length()];
+        
+        int maxY = 0, totalX = 0;
+        
+        //boolean ls[][][] = new boolean[word.length()][XL][YL];
+        boolean ls[][][] = new boolean[word.length()][][];
 
         for (int l = 0; l < word.length(); l++) {
-            ls[l] = getLetterPattern(word.charAt(l));
+            boolean[][] lp;
+            
+            lp = getLetterPattern(word.charAt(l));
+            ls[l] = lp;
+            if (maxY < lp.length)
+                maxY = lp.length;
+            totalX += lp[0].length;
         }
+        
+        boolean wordPattern[][] = new boolean[maxY][totalX];
 
-        //copy from 3d array to 2d array 
+        //copy from 3d array to 2d array
+        int letterX = 0;
         for (int l = 0; l < word.length(); l++) {
-            for (int y = 0; y < XL; y++) {
-                for (int x = 0; x < YL; x++) {
-                    wordPattern[x][y + (YL * l)] = ls[l][x][y];
+            int y;
+            for (y = 0; y < ls[l].length; y++) {
+                int x;
+                for (x = 0; x < ls[l][y].length; x++) {
+                    wordPattern[y][letterX + x] = ls[l][y][x];
                 }
             }
+            for (; y < maxY; y++) {
+                //boolean f[] = new boolean[ls[l][0].length];
+                for (int x = 0; x < ls[l][0].length; x++) {
+                    wordPattern[y][letterX + x] = false;
+                }
+            }
+            letterX += ls[l][0].length;
         }
         return wordPattern;
     }
@@ -67,11 +88,11 @@ public class PrintLetter {
     }
 
     private static boolean[][] getLetterSpace() {
-        boolean L[][] = new boolean[XL][YL];
+        boolean L[][] = new boolean[defaultY][defaultX];
 
-        for (int x = 0; x < XL; x++) {
-            for (int y = 0; y < YL; y++) {
-                L[x][y] = false;
+        for (boolean[] l:L){
+            for(boolean b:l){
+                b = false;
             }
         }
         return L;
@@ -96,7 +117,6 @@ public class PrintLetter {
     }
 
     private static boolean[][] getLetterA() {
-
         boolean O = false, X = true;
         boolean[][] L = {  
                              {O, O, O, O, X, O, O, O, O, O}
@@ -111,6 +131,7 @@ public class PrintLetter {
                             ,{X, X, O, O, O, O, O, X, X, O}
                         };
         return L;
+
     }
 
     private static boolean[][] getLetterB() {
@@ -207,11 +228,11 @@ public class PrintLetter {
     //...
     private static boolean[][] getLetterRandom() {
 
-        boolean L[][] = new boolean[XL][YL];
+        boolean L[][] = new boolean[defaultX][defaultY];
 
-        for (int i = 0; i < XL; i++) {
-            for (int j = 0; j < YL; j++) {
-                L[i][j] = getRandomBoolean();
+        for (int x = 0; x < defaultX; x++) {
+            for (int y = 0; y < defaultY; y++) {
+                L[x][y] = getRandomBoolean();
             }
         }
         return L;
