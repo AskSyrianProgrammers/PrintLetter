@@ -9,28 +9,20 @@ import java.util.Map;
  */
 public class PrintLetter {
 
-    final static int NoL = 27; // number of letters 0 = Space, 1 = A, 2 = B, 3 = C ...etc
     final static int XL = 10; // number of X pixels
     final static int YL = 10; // number of Y pixels, **hint the array will be filled manually 10 by 10 
 
-    final static boolean[][][] LetterPattern = new boolean[NoL][][];
-    final static Map<Character, Integer> LN = new HashMap<>(); //Letter Number it give the number for spesific char
+    final static Map<Character, boolean[][]> LP = new HashMap<>(); //LP is Letter Pattenr 2D array of boolean for spesific char
 
     static {
-        fillLettersNumberValue();
         fillLettersPattern();
     }
 
-    private static int getLN(char c) {
-        
-        if (LN.containsKey(c))
-            return LN.get(c); 
+    private static boolean[][] getLetterPattern(char c){
+        if (LP.containsKey(c))
+            return LP.get(c);
         else
-            return 0; //return [Space char] number if key not found
-    }
-
-    private static boolean[][] getLetter(char c){
-        return LetterPattern[getLN(c)];
+            return LP.get(' '); // return space, we garantee allways that space is there
     }
 
     static boolean[][] getWordpattern(String word) {
@@ -40,7 +32,7 @@ public class PrintLetter {
         boolean ls[][][] = new boolean[word.length()][XL][YL];
 
         for (int l = 0; l < word.length(); l++) {
-            ls[l] = getLetter(word.charAt(l));
+            ls[l] = getLetterPattern(word.charAt(l));
         }
 
         //copy from 3d array to 2d array 
@@ -54,78 +46,22 @@ public class PrintLetter {
         return wordPattern;
     }
 
-    //Fill array of pattern 3Dimention Array 1- number of the letter from 0 to 25 (A-Z). 2- X of  
-    private static void fillLettersNumberValue() {
-
-        LN.put(' ', 0);
-        LN.put('A', 1);
-        LN.put('B', 2);
-        LN.put('C', 3);
-        LN.put('D', 4);
-        LN.put('E', 5);
-        LN.put('F', 6);
-
-        //TODO: when the letter is supported uncomment it
-//        LN.put('G', 7);
-//        LN.put('H', 8);
-//        LN.put('I', 9);
-//        LN.put('J', 10);
-//        LN.put('K', 11);
-//        LN.put('L', 12);
-//        LN.put('M', 13);
-//        LN.put('N', 14);
-//        LN.put('O', 15);
-//        LN.put('P', 16);
-//        LN.put('Q', 17);
-//        LN.put('R', 18);
-//        LN.put('S', 19);
-//        LN.put('T', 20);
-//        LN.put('U', 21);
-//        LN.put('V', 22);
-//        LN.put('W', 23);
-//        LN.put('X', 24);
-//        LN.put('Y', 25);
-//        LN.put('Z', 26);
-
-        //give the value of the small letter same of capital letter untill support the small letter with diffreant number 
-        LN.put('a', 1);
-        LN.put('b', 2);
-        LN.put('c', 3);
-        LN.put('d', 4);
-        LN.put('e', 5);
-        LN.put('f', 6);
-
-        //TODO: when the letter is supported uncomment it
-//        LN.put('g', 7);
-//        LN.put('h', 8);
-//        LN.put('i', 9);
-//        LN.put('j', 10);
-//        LN.put('k', 11);
-//        LN.put('l', 12);
-//        LN.put('m', 13);
-//        LN.put('n', 14);
-//        LN.put('o', 15);
-//        LN.put('p', 16);
-//        LN.put('q', 17);
-//        LN.put('r', 18);
-//        LN.put('s', 19);
-//        LN.put('t', 20);
-//        LN.put('u', 21);
-//        LN.put('v', 22);
-//        LN.put('w', 23);
-//        LN.put('x', 24);
-//        LN.put('y', 25);
-//        LN.put('z', 26);
-    }
-
     private static void fillLettersPattern() {
-        LetterPattern[getLN(' ')] = getLetterSpace();
-        LetterPattern[getLN('A')] = getLetterA();
-        LetterPattern[getLN('B')] = getLetterB();
-        LetterPattern[getLN('C')] = getLetterC();
-        LetterPattern[getLN('D')] = getLetterD();
-        LetterPattern[getLN('E')] = getLetterE();
-        LetterPattern[getLN('F')] = getLetterF();
+        LP.put(' ', getLetterSpace());
+        LP.put('-', getLetterDash());
+        LP.put('A', getLetterA());
+        LP.put('a', getLetterA());
+        LP.put('B', getLetterB());
+        LP.put('b', getLetterB());
+        LP.put('C', getLetterC());
+        LP.put('c', getLetterC());
+        LP.put('D', getLetterD());
+        LP.put('d', getLetterD());
+        LP.put('E', getLetterE());
+        LP.put('e', getLetterE());
+        LP.put('F', getLetterF());
+        LP.put('f', getLetterF());
+
         //TODO: call the rest of the letters
         //....
     }
@@ -138,6 +74,24 @@ public class PrintLetter {
                 L[x][y] = false;
             }
         }
+        return L;
+    }
+
+    private static boolean[][] getLetterDash() {
+
+        boolean O = false, X = true;
+        boolean[][] L = {  
+                             {O, O, O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}
+                            ,{X, X, X, X, X, X, X, X, O, O}
+                            ,{X, X, X, X, X, X, X, X, O, O}
+                            ,{X, X, X, X, X, X, X, X, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O, O, O}
+                        };
         return L;
     }
 

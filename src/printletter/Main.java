@@ -20,11 +20,11 @@ public class Main {
                 //small letter takes same value of capital letter :
 
                 //print the word using '*'
-                print("ABCDEF a b d e f", '*');
+                print("ABCDEF a b-d?e f", '*');
                 System.out.println();
                 
                 //print the word using each letter shape
-                printWithSameChar("ABCDEF a b d e f");
+                printWithSameChar("ABCDEF a b-d e f");
 
             } catch (Exception e) {
                 System.out.println(e);
