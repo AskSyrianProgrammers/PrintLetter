@@ -153,7 +153,6 @@ public class PrintLetter {
     private static boolean[][] getLetterB() {
 
         boolean O = false, X = true;
-        
         boolean L[][] = {
                              {X, X, X, X, X, O, O, O, O, O}
                             ,{X, X, X, X, X, X, O, O, O, O}
@@ -201,9 +200,6 @@ public class PrintLetter {
                             ,{X, X, O, O, X, X, X, X, O, O}
                             ,{X, X, X, X, X, X, X, O, O, O}
                             ,{X, X, X, X, X, X, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}                        
                         };
         return L;
     }
