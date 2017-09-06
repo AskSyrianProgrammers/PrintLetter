@@ -22,7 +22,11 @@ public class PrintLetter {
     }
 
     private static int getLN(char c) {
-        return LN.get(c); 
+        
+        if (LN.containsKey(c))
+            return LN.get(c); 
+        else
+            return 0; //return [Space char] number if key not found
     }
 
     private static boolean[][] getLetter(char c){
@@ -60,26 +64,28 @@ public class PrintLetter {
         LN.put('D', 4);
         LN.put('E', 5);
         LN.put('F', 6);
-        LN.put('G', 7);
-        LN.put('H', 8);
-        LN.put('I', 9);
-        LN.put('J', 10);
-        LN.put('K', 11);
-        LN.put('L', 12);
-        LN.put('M', 13);
-        LN.put('N', 14);
-        LN.put('O', 15);
-        LN.put('P', 16);
-        LN.put('Q', 17);
-        LN.put('R', 18);
-        LN.put('S', 19);
-        LN.put('T', 20);
-        LN.put('U', 21);
-        LN.put('V', 22);
-        LN.put('W', 23);
-        LN.put('X', 24);
-        LN.put('Y', 25);
-        LN.put('Z', 26);
+
+        //TODO: when the letter is supported uncomment it
+//        LN.put('G', 7);
+//        LN.put('H', 8);
+//        LN.put('I', 9);
+//        LN.put('J', 10);
+//        LN.put('K', 11);
+//        LN.put('L', 12);
+//        LN.put('M', 13);
+//        LN.put('N', 14);
+//        LN.put('O', 15);
+//        LN.put('P', 16);
+//        LN.put('Q', 17);
+//        LN.put('R', 18);
+//        LN.put('S', 19);
+//        LN.put('T', 20);
+//        LN.put('U', 21);
+//        LN.put('V', 22);
+//        LN.put('W', 23);
+//        LN.put('X', 24);
+//        LN.put('Y', 25);
+//        LN.put('Z', 26);
 
         //give the value of the small letter same of capital letter untill support the small letter with diffreant number 
         LN.put('a', 1);
@@ -88,26 +94,28 @@ public class PrintLetter {
         LN.put('d', 4);
         LN.put('e', 5);
         LN.put('f', 6);
-        LN.put('g', 7);
-        LN.put('h', 8);
-        LN.put('i', 9);
-        LN.put('j', 10);
-        LN.put('k', 11);
-        LN.put('l', 12);
-        LN.put('m', 13);
-        LN.put('n', 14);
-        LN.put('o', 15);
-        LN.put('p', 16);
-        LN.put('q', 17);
-        LN.put('r', 18);
-        LN.put('s', 19);
-        LN.put('t', 20);
-        LN.put('u', 21);
-        LN.put('v', 22);
-        LN.put('w', 23);
-        LN.put('x', 24);
-        LN.put('y', 25);
-        LN.put('z', 26);
+
+        //TODO: when the letter is supported uncomment it
+//        LN.put('g', 7);
+//        LN.put('h', 8);
+//        LN.put('i', 9);
+//        LN.put('j', 10);
+//        LN.put('k', 11);
+//        LN.put('l', 12);
+//        LN.put('m', 13);
+//        LN.put('n', 14);
+//        LN.put('o', 15);
+//        LN.put('p', 16);
+//        LN.put('q', 17);
+//        LN.put('r', 18);
+//        LN.put('s', 19);
+//        LN.put('t', 20);
+//        LN.put('u', 21);
+//        LN.put('v', 22);
+//        LN.put('w', 23);
+//        LN.put('x', 24);
+//        LN.put('y', 25);
+//        LN.put('z', 26);
     }
 
     private static void fillLettersPattern() {
@@ -118,6 +126,7 @@ public class PrintLetter {
         LetterPattern[getLN('D')] = getLetterD();
         LetterPattern[getLN('E')] = getLetterE();
         LetterPattern[getLN('F')] = getLetterF();
+        //TODO: call the rest of the letters
         //....
     }
 

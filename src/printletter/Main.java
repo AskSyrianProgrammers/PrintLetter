@@ -11,14 +11,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
         do {
             try {
                 //TODO: add scanner
-                //currently its only support 6 letters [space], A B C D E, if you add any other letter will have NullPointerException Search for TODO:
+                //currently its only support few letters [space], A B C D E,... if you add any other letter will have char=0 [Space] instead
+                //Search for "//TODO:" to suuport other letters 
                 //small letter takes same value of capital letter :
                 
-                print("ABCDEF a b c d e f", 'f');
+                print("ABCDEF a b d e f", 'f');
 
             } catch (Exception e) {
                 System.out.println(e);
