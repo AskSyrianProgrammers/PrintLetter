@@ -25,13 +25,65 @@ public class PrintLetter {
             return LP.get(' '); // return space, we garantee allways that space is there
     }
 
-    static boolean[][] getWordpattern(String word) {
-
-        //boolean wordPattern[][];// = new boolean[XL][YL * word.length()];
+    private static char[][] convertBoolToChar(boolean b[][], char c){
         
+        char[][] r = new char[b.length][];
+        
+        for (int y = 0; y < b.length; y++) {
+            r[y] = new char[b[y].length];
+            for (int x = 0; x < b[y].length; x++) {
+                if (b[y][x])
+                    r[y][x] = c;
+                else
+                    r[y][x] = ' ';
+            }
+        }
+        return r;
+    }
+    
+    static char[][] getWordpatternChar(String word) {
         int maxY = 0, totalX = 0;
         
-        //boolean ls[][][] = new boolean[word.length()][XL][YL];
+        char ls[][][] = new char[word.length()][][];
+
+        for (int l = 0; l < word.length(); l++) {
+            char[][] lp;
+            
+            lp = convertBoolToChar(getLetterPattern(word.charAt(l)),word.charAt(l));
+
+            ls[l] = lp;
+            if (maxY < lp.length)
+                maxY = lp.length;
+            totalX += lp[0].length;
+        }
+        
+        char wordPatternChar[][] = new char[maxY][totalX];
+
+        //copy from 3d array to 2d array
+        int letterX = 0;
+        for (int l = 0; l < word.length(); l++) {
+            int y;
+            for (y = 0; y < ls[l].length; y++) {
+                int x;
+                for (x = 0; x < ls[l][y].length; x++) {
+                    wordPatternChar[y][letterX + x] = ls[l][y][x];
+                }
+            }
+            for (; y < maxY; y++) {
+                for (int x = 0; x < ls[l][0].length; x++) {
+                    wordPatternChar[y][letterX + x] = ' ';
+                }
+            }
+            letterX += ls[l][0].length;
+        }
+        return wordPatternChar;
+
+    }
+
+    static boolean[][] getWordpattern(String word) {
+
+        int maxY = 0, totalX = 0;
+        
         boolean ls[][][] = new boolean[word.length()][][];
 
         for (int l = 0; l < word.length(); l++) {
@@ -57,7 +109,6 @@ public class PrintLetter {
                 }
             }
             for (; y < maxY; y++) {
-                //boolean f[] = new boolean[ls[l][0].length];
                 for (int x = 0; x < ls[l][0].length; x++) {
                     wordPattern[y][letterX + x] = false;
                 }

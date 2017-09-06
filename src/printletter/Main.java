@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package printletter;
 
 public class Main {
@@ -24,7 +19,7 @@ public class Main {
                 System.out.println();
                 
                 //print the word using each letter shape
-                //printWithSameChar("ABCDEF a b-d e f");
+                printWithSameChar("ABCDEF a b-d e f");
 
             } catch (Exception e) {
                 System.out.println(e);
@@ -35,17 +30,11 @@ public class Main {
     }
 
     public static void printWithSameChar(String word) {
-        boolean pat[][] = PrintLetter.getWordpattern(word);
-
-        //assuming all char comes at the same width
-        //TODO: this will return error if the char width are diffreant
-        int cw = pat[0].length / word.length();
+        char pat[][] = PrintLetter.getWordpatternChar(word);
  
-        for (boolean[] line : pat) {
-            int i = 0;
-            for (boolean c : line) {
-                System.out.print(c ? word.charAt(i/cw) : ' ');
-                i++;
+        for (char[] line : pat) {
+            for (char c : line) {
+                System.out.print(c);
             }
             System.out.println();
         }
