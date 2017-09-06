@@ -117,6 +117,7 @@ public class PrintLetter {
         LetterPattern[getLN('C')] = getLetterC();
         LetterPattern[getLN('D')] = getLetterD();
         LetterPattern[getLN('E')] = getLetterE();
+        LetterPattern[getLN('F')] = getLetterF();
         //....
     }
 
@@ -154,16 +155,16 @@ public class PrintLetter {
         boolean O = false, X = true;
         
         boolean L[][] = {
-                             {X, X, X, X, O, O, O, O, O, O}
+                             {X, X, X, X, X, O, O, O, O, O}
+                            ,{X, X, X, X, X, X, O, O, O, O}
+                            ,{X, X, O, O, O, X, X, O, O, O}
+                            ,{X, X, O, O, O, X, X, O, O, O}
+                            ,{X, X, X, X, X, X, O, O, O, O}
+                            ,{X, X, X, X, X, X, O, O, O, O}
+                            ,{X, X, O, O, O, X, X, O, O, O}
+                            ,{X, X, O, O, O, X, X, O, O, O}
+                            ,{X, X, X, X, X, X, O, O, O, O}
                             ,{X, X, X, X, X, O, O, O, O, O}
-                            ,{X, X, O, O, X, X, O, O, O, O}
-                            ,{X, X, O, O, X, X, O, O, O, O}
-                            ,{X, X, X, X, X, O, O, O, O, O}
-                            ,{X, X, X, X, X, O, O, O, O, O}
-                            ,{X, X, O, O, X, X, O, O, O, O}
-                            ,{X, X, O, O, X, X, O, O, O, O}
-                            ,{X, X, X, X, X, O, O, O, O, O}
-                            ,{X, X, X, X, O, O, O, O, O, O}
                         };
         return L;
     }
@@ -225,7 +226,25 @@ public class PrintLetter {
         return L;
     }
 
-    //TODO: do the rest letters E - Z
+    private static boolean[][] getLetterF() {
+
+        boolean O = false, X = true;
+        boolean L[][] = {
+                            {X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, X, X, X, X, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O, O}
+                        };
+        return L;
+    }
+
+    //TODO: do the rest letters ....X Y Z
     //...
     private static boolean[][] getLetterRandom() {
 

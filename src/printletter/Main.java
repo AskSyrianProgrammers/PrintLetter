@@ -15,10 +15,10 @@ public class Main {
         do {
             try {
                 //TODO: add scanner
-                //currently its only support 5 letters [space], A B C D, if you add any other letter will have NullPointerException Search for TODO:
+                //currently its only support 6 letters [space], A B C D E, if you add any other letter will have NullPointerException Search for TODO:
                 //small letter takes same value of capital letter :
                 
-                print("ABCDE a b c d e", 'E');
+                print("ABCDEF a b c d e f", 'f');
 
             } catch (Exception e) {
                 System.out.println(e);
