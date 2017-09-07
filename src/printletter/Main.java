@@ -1,5 +1,7 @@
 package printletter;
 
+import java.util.Scanner;
+
 public class Main {
 
     /**
@@ -7,25 +9,33 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        print("Welcome",'¤');
         do {
             try {
-                //TODO: add scanner
                 //currently its only support few letters [space], A B C D E,... if you add any other letter will have char=0 [Space] instead
                 //Search for "//TODO:" to suuport other letters 
-                //small letter takes same value of capital letter :
+                //small letter takes same value of capital letter, in case want to support both see how letter I and i are supported
+                
+                Scanner sc = new Scanner(System.in);
 
+                System.out.print(">");
+                String word = sc.nextLine();
+                if (word.equals("exit")){
+                    System.exit(0);
+                }
                 //print the word using '#'
-                print("ABCDEFG a b-cf", '#');
+                //String word = "ABCDEFGHIiJKLMNOPQRSTUVWXYZ";
+                print(word, '#');
                 System.out.println();
 
                 //print the word using each letter shape
-                printWithSameChar("ABCDEFG a b-d e f");
+                printWithSameChar(word);
 
             } catch (Exception e) {
                 System.out.println(e);
             }
             //TODO: change the condition until command exit
-        } while (false);
+        } while (true);
 
     }
 
