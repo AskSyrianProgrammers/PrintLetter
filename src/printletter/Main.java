@@ -15,11 +15,11 @@ public class Main {
                 //small letter takes same value of capital letter :
 
                 //print the word using '#'
-                print("ABCDEF a b-aaa f", '#');
+                print("ABCDEFG a b-cf", '#');
                 System.out.println();
-                
+
                 //print the word using each letter shape
-                printWithSameChar("ABCDEF a b-d e f");
+                printWithSameChar("ABCDEFG a b-d e f");
 
             } catch (Exception e) {
                 System.out.println(e);
@@ -30,24 +30,23 @@ public class Main {
     }
 
     public static void printWithSameChar(String word) {
+
         char pat[][] = PrintLetter.getWordpatternChar(word);
- 
         for (char[] line : pat) {
             for (char c : line) {
                 System.out.print(c);
             }
             System.out.println();
         }
-    
+
     }
 
-    public static void print(String word, char p) {
+    public static void print(String word, char c) {
 
         boolean pat[][] = PrintLetter.getWordpattern(word);
-
         for (boolean[] line : pat) {
-            for (boolean c : line) {
-                System.out.print(c ? p : ' ');
+            for (boolean b : line) {
+                System.out.print(b ? c : ' ');
             }
             System.out.println();
         }
