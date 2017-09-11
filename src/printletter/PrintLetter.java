@@ -42,7 +42,11 @@ public class PrintLetter {
     }
     
     static char[][] getWordpatternChar(String word) {
-        final int HOR_LETTER_MAGRIN = 2;
+        final byte DEF_HOR_LETTER_MAGRIN = 2;
+        return getWordpatternChar(word,DEF_HOR_LETTER_MAGRIN);
+    }
+
+    static char[][] getWordpatternChar(String word, byte letterMargin) {
         int maxY = 0, totalX = 0;
         
         char ls[][][] = new char[word.length()][][];
@@ -55,7 +59,7 @@ public class PrintLetter {
             ls[l] = lp;
             if (maxY < lp.length)
                 maxY = lp.length;
-            totalX += lp[0].length + HOR_LETTER_MAGRIN;
+            totalX += lp[0].length + letterMargin;
         }
         
         char wordPatternChar[][] = new char[maxY][totalX];
@@ -70,23 +74,27 @@ public class PrintLetter {
                     wordPatternChar[y][letterX + x] = ls[l][y][x];
                 }
                 //add margin
-                for (; x < ls[l][y].length + HOR_LETTER_MAGRIN; x++) {
+                for (; x < ls[l][y].length + letterMargin; x++) {
                     wordPatternChar[y][letterX + x] = Character.SPACE_SEPARATOR;
                 }    
             }
             for (; y < maxY; y++) {
-                for (int x = 0; x < ls[l][0].length + HOR_LETTER_MAGRIN; x++) {
+                for (int x = 0; x < ls[l][0].length + letterMargin; x++) {
                     wordPatternChar[y][letterX + x] = Character.SPACE_SEPARATOR;
                 }
             }
-            letterX += ls[l][0].length + HOR_LETTER_MAGRIN;
+            letterX += ls[l][0].length + letterMargin;
         }
         return wordPatternChar;
 
     }
 
     static boolean[][] getWordpattern(String word) {
-        final int HOR_LETTER_MAGRIN = 2;
+        final byte DEF_HOR_LETTER_MAGRIN = 2;
+        return getWordpattern(word, DEF_HOR_LETTER_MAGRIN);
+    }
+
+    static boolean[][] getWordpattern(String word, byte letterMargin) {
         
         int maxY = 0, totalX = 0;
         
@@ -99,7 +107,7 @@ public class PrintLetter {
             ls[l] = lp;
             if (maxY < lp.length)
                 maxY = lp.length;
-            totalX += lp[0].length + HOR_LETTER_MAGRIN;
+            totalX += lp[0].length + letterMargin;
         }
         
         boolean wordPattern[][] = new boolean[maxY][totalX];
@@ -114,17 +122,17 @@ public class PrintLetter {
                     wordPattern[y][letterX + x] = ls[l][y][x];
                 }
                 //add margin //in fact no need to run this block as the init value of the array is already false
-                for (; x < ls[l][y].length + HOR_LETTER_MAGRIN; x++) {
+                for (; x < ls[l][y].length + letterMargin; x++) {
                     wordPattern[y][letterX + x] = false;
                 }    
             }
             //in fact no need to run this block as the init value of the array is already false
             for (; y < maxY; y++) {
-                for (int x = 0; x < ls[l][0].length + HOR_LETTER_MAGRIN; x++) {
+                for (int x = 0; x < ls[l][0].length + letterMargin; x++) {
                     wordPattern[y][letterX + x] = false;
                 }
             }
-            letterX += ls[l][0].length + HOR_LETTER_MAGRIN;
+            letterX += ls[l][0].length + letterMargin;
         }
         return wordPattern;
     }

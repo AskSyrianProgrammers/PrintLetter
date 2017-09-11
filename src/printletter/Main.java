@@ -9,7 +9,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        print("Welcome",'¤');
+        print("ABCDEFGKLMNOP",'¤');
         do {
             try {
                 //currently its only support few letters [space], A B C D E,... if you add any other letter will have char=0 [Space] instead
