@@ -42,6 +42,7 @@ public class PrintLetter {
     }
     
     static char[][] getWordpatternChar(String word) {
+        final int HOR_LETTER_MAGRIN = 2;
         int maxY = 0, totalX = 0;
         
         char ls[][][] = new char[word.length()][][];
@@ -54,7 +55,7 @@ public class PrintLetter {
             ls[l] = lp;
             if (maxY < lp.length)
                 maxY = lp.length;
-            totalX += lp[0].length;
+            totalX += lp[0].length + HOR_LETTER_MAGRIN;
         }
         
         char wordPatternChar[][] = new char[maxY][totalX];
@@ -68,20 +69,25 @@ public class PrintLetter {
                 for (x = 0; x < ls[l][y].length; x++) {
                     wordPatternChar[y][letterX + x] = ls[l][y][x];
                 }
+                //add margin
+                for (; x < ls[l][y].length + HOR_LETTER_MAGRIN; x++) {
+                    wordPatternChar[y][letterX + x] = Character.SPACE_SEPARATOR;
+                }    
             }
             for (; y < maxY; y++) {
-                for (int x = 0; x < ls[l][0].length; x++) {
-                    wordPatternChar[y][letterX + x] = ' ';
+                for (int x = 0; x < ls[l][0].length + HOR_LETTER_MAGRIN; x++) {
+                    wordPatternChar[y][letterX + x] = Character.SPACE_SEPARATOR;
                 }
             }
-            letterX += ls[l][0].length;
+            letterX += ls[l][0].length + HOR_LETTER_MAGRIN;
         }
         return wordPatternChar;
 
     }
 
     static boolean[][] getWordpattern(String word) {
-
+        final int HOR_LETTER_MAGRIN = 2;
+        
         int maxY = 0, totalX = 0;
         
         boolean ls[][][] = new boolean[word.length()][][];
@@ -93,7 +99,7 @@ public class PrintLetter {
             ls[l] = lp;
             if (maxY < lp.length)
                 maxY = lp.length;
-            totalX += lp[0].length;
+            totalX += lp[0].length + HOR_LETTER_MAGRIN;
         }
         
         boolean wordPattern[][] = new boolean[maxY][totalX];
@@ -107,13 +113,18 @@ public class PrintLetter {
                 for (x = 0; x < ls[l][y].length; x++) {
                     wordPattern[y][letterX + x] = ls[l][y][x];
                 }
+                //add margin //in fact no need to run this block as the init value of the array is already false
+                for (; x < ls[l][y].length + HOR_LETTER_MAGRIN; x++) {
+                    wordPattern[y][letterX + x] = false;
+                }    
             }
+            //in fact no need to run this block as the init value of the array is already false
             for (; y < maxY; y++) {
-                for (int x = 0; x < ls[l][0].length; x++) {
+                for (int x = 0; x < ls[l][0].length + HOR_LETTER_MAGRIN; x++) {
                     wordPattern[y][letterX + x] = false;
                 }
             }
-            letterX += ls[l][0].length;
+            letterX += ls[l][0].length + HOR_LETTER_MAGRIN;
         }
         return wordPattern;
     }
@@ -192,16 +203,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean[][] L = {  
-                             {O, O, O, O, O, O, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}
-                            ,{X, X, X, X, X, X, X, X, O, O}
-                            ,{X, X, X, X, X, X, X, X, O, O}
-                            ,{X, X, X, X, X, X, X, X, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}
-                            ,{O, O, O, O, O, O, O, O, O, O}
+                             {O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O}
+                            ,{X, X, X, X, X, X, X, X}
+                            ,{X, X, X, X, X, X, X, X}
+                            ,{X, X, X, X, X, X, X, X}
+                            ,{O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O}
+                            ,{O, O, O, O, O, O, O, O}
                         };
         return L;
     }
@@ -209,16 +220,16 @@ public class PrintLetter {
     private static boolean[][] getLetterA() {
         boolean O = false, X = true;
         boolean[][] L = {  
-                             {O, O, O, X, X, O, O, O, O}
-                            ,{O, O, X, X, X, X, O, O, O}
-                            ,{O, X, X, O, O, X, X, O, O}
-                            ,{X, X, O, O, O, O, X, X, O}
-                            ,{X, X, O, O, O, O, X, X, O}
-                            ,{X, X, X, X, X, X, X, X, O}
-                            ,{X, X, X, X, X, X, X, X, O}
-                            ,{X, X, O, O, O, O, X, X, O}
-                            ,{X, X, O, O, O, O, X, X, O}
-                            ,{X, X, O, O, O, O, X, X, O}
+                             {O, O, O, X, X, O, O, O}
+                            ,{O, O, X, X, X, X, O, O}
+                            ,{O, X, X, O, O, X, X, O}
+                            ,{X, X, O, O, O, O, X, X}
+                            ,{X, X, O, O, O, O, X, X}
+                            ,{X, X, X, X, X, X, X, X}
+                            ,{X, X, X, X, X, X, X, X}
+                            ,{X, X, O, O, O, O, X, X}
+                            ,{X, X, O, O, O, O, X, X}
+                            ,{X, X, O, O, O, O, X, X}
                         };
         return L;
 
@@ -228,16 +239,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                             {X, X, X, X, X, O, O, O, O}
-                            ,{X, X, X, X, X, X, O, O, O}
-                            ,{X, X, O, O, O, X, X, O, O}
-                            ,{X, X, O, O, O, X, X, O, O}
-                            ,{X, X, X, X, X, X, O, O, O}
-                            ,{X, X, X, X, X, X, O, O, O}
-                            ,{X, X, O, O, O, X, X, O, O}
-                            ,{X, X, O, O, O, X, X, O, O}
-                            ,{X, X, X, X, X, X, O, O, O}
-                            ,{X, X, X, X, X, O, O, O, O}
+                             {X, X, X, X, X, O, O}
+                            ,{X, X, X, X, X, X, O}
+                            ,{X, X, O, O, O, X, X}
+                            ,{X, X, O, O, O, X, X}
+                            ,{X, X, X, X, X, X, O}
+                            ,{X, X, X, X, X, X, O}
+                            ,{X, X, O, O, O, X, X}
+                            ,{X, X, O, O, O, X, X}
+                            ,{X, X, X, X, X, X, O}
+                            ,{X, X, X, X, X, O, O}
                         };
         return L;
     }
@@ -246,16 +257,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                             {O, O, X, X, X, X, X, O, O}
-                            ,{O, X, X, X, X, X, X, O, O}
-                            ,{X, X, X, O, O, O, O, O, O}
-                            ,{X, X, O, O, O, O, O, O, O}
-                            ,{X, X, O, O, O, O, O, O, O}
-                            ,{X, X, O, O, O, O, O, O, O}
-                            ,{X, X, O, O, O, O, O, O, O}
-                            ,{X, X, X, O, O, O, O, O, O}
-                            ,{O, X, X, X, X, X, X, O, O}
-                            ,{O, O, X, X, X, X, X, O, O}
+                             {O, O, X, X, X, X, X}
+                            ,{O, X, X, X, X, X, X}
+                            ,{X, X, X, O, O, O, O}
+                            ,{X, X, O, O, O, O, O}
+                            ,{X, X, O, O, O, O, O}
+                            ,{X, X, O, O, O, O, O}
+                            ,{X, X, O, O, O, O, O}
+                            ,{X, X, X, O, O, O, O}
+                            ,{O, X, X, X, X, X, X}
+                            ,{O, O, X, X, X, X, X}
                         };
         return L;
     }
@@ -264,16 +275,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {X, X, X, X, X, X, O, O, O, O}
-                            ,{X, X, X, X, X, X, X, O, O, O}
-                            ,{X, X, O, O, X, X, X, X, O, O}
-                            ,{X, X, O, O, O, X, X, X, O, O}
-                            ,{X, X, O, O, O, O, X, X, O, O}
-                            ,{X, X, O, O, O, O, X, X, O, O}
-                            ,{X, X, O, O, O, X, X, X, O, O}
-                            ,{X, X, O, O, X, X, X, X, O, O}
-                            ,{X, X, X, X, X, X, X, O, O, O}
-                            ,{X, X, X, X, X, X, O, O, O, O}
+                             {X, X, X, X, X, X, O, O}
+                            ,{X, X, X, X, X, X, X, O}
+                            ,{X, X, O, O, X, X, X, X}
+                            ,{X, X, O, O, O, X, X, X}
+                            ,{X, X, O, O, O, O, X, X}
+                            ,{X, X, O, O, O, O, X, X}
+                            ,{X, X, O, O, O, X, X, X}
+                            ,{X, X, O, O, X, X, X, X}
+                            ,{X, X, X, X, X, X, X, O}
+                            ,{X, X, X, X, X, X, O, O}
                         };
         return L;
     }
@@ -282,16 +293,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {X, X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, X, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, X, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, X, O, O}
+                            {X, X, X, X, X, X}
+                           ,{X, X, X, X, X, X}
+                           ,{X, X, O, O, O, O}
+                           ,{X, X, O, O, O, O}
+                           ,{X, X, X, X, X, X}
+                           ,{X, X, X, X, X, X}
+                           ,{X, X, O, O, O, O}
+                           ,{X, X, O, O, O, O}
+                           ,{X, X, X, X, X, X}
+                           ,{X, X, X, X, X, X}
                         };
         return L;
     }
@@ -300,16 +311,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {X, X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, X, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, X, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, O, O, O}
+                            {X, X, X, X, X, X,}
+                           ,{X, X, X, X, X, X,}
+                           ,{X, X, O, O, O, O,}
+                           ,{X, X, O, O, O, O,}
+                           ,{X, X, X, X, X, X,}
+                           ,{X, X, X, X, X, X,}
+                           ,{X, X, O, O, O, O,}
+                           ,{X, X, O, O, O, O,}
+                           ,{X, X, O, O, O, O,}
+                           ,{X, X, O, O, O, O,}
                         };
         return L;
     }
@@ -318,16 +329,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {O, O, X, X, X, X, O, O, O, O, O}
-                           ,{O, X, X, X, X, X, O, O, O, O, O}
-                           ,{X, X, X, O, O, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, O, O, O, O, O, O}
-                           ,{X, X, O, O, O, X, X, X, X, O, O}
-                           ,{X, X, O, O, O, X, X, X, X, O, O}
-                           ,{X, X, X, O, O, O, X, X, O, O, O}
-                           ,{O, X, X, X, X, X, X, X, O, O, O}
-                           ,{O, O, X, X, X, X, X, O, O, O, O}
+                            {O, O, X, X, X, X, O, O, O}
+                           ,{O, X, X, X, X, X, O, O, O}
+                           ,{X, X, X, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, O, O, O, O}
+                           ,{X, X, O, O, O, X, X, X, X}
+                           ,{X, X, O, O, O, X, X, X, X}
+                           ,{X, X, X, O, O, O, X, X, O}
+                           ,{O, X, X, X, X, X, X, X, O}
+                           ,{O, O, X, X, X, X, X, O, O}
                         };
         return L;
     }
@@ -336,16 +347,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {X, X, O, O, O, X, X, O, O}
-                           ,{X, X, O, O, O, X, X, O, O}
-                           ,{X, X, O, O, O, X, X, O, O}
-                           ,{X, X, O, O, O, X, X, O, O}
-                           ,{X, X, X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, X, X, O, O}
-                           ,{X, X, O, O, O, X, X, O, O}
-                           ,{X, X, O, O, O, X, X, O, O}
-                           ,{X, X, O, O, O, X, X, O, O}
-                           ,{X, X, O, O, O, X, X, O, O}                        };
+                            {X, X, O, O, O, X, X}
+                           ,{X, X, O, O, O, X, X}
+                           ,{X, X, O, O, O, X, X}
+                           ,{X, X, O, O, O, X, X}
+                           ,{X, X, X, X, X, X, X}
+                           ,{X, X, X, X, X, X, X}
+                           ,{X, X, O, O, O, X, X}
+                           ,{X, X, O, O, O, X, X}
+                           ,{X, X, O, O, O, X, X}
+                           ,{X, X, O, O, O, X, X}                        };
         return L;
     }
 
@@ -353,16 +364,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, O, O}
-                           ,{O, X, X, X, O, O, O}
-                           ,{O, X, X, X, O, O, O}
-                           ,{O, X, X, X, O, O, O}
-                           ,{O, X, X, X, O, O, O}
-                           ,{O, X, X, X, O, O, O}
-                           ,{O, X, X, X, O, O, O}
-                           ,{X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, O, O}                        
+                            {X, X, X, X, X}
+                           ,{X, X, X, X, X}
+                           ,{O, X, X, X, O}
+                           ,{O, X, X, X, O}
+                           ,{O, X, X, X, O}
+                           ,{O, X, X, X, O}
+                           ,{O, X, X, X, O}
+                           ,{O, X, X, X, O}
+                           ,{X, X, X, X, X}
+                           ,{X, X, X, X, X}                        
         };
         return L;
     }
@@ -389,16 +400,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {X, X, X, O, O, O, O, O, O, O}
-                           ,{X, X, X, O, O, O, O, O, O, O}
-                           ,{X, X, X, O, O, O, O, O, O, O}
-                           ,{X, X, X, O, O, O, O, O, O, O}
-                           ,{X, X, X, O, O, O, O, O, O, O}
-                           ,{X, X, X, O, O, O, O, O, O, O}
-                           ,{X, X, X, O, O, O, O, O, O, O}
-                           ,{X, X, X, O, O, O, O, O, O, O}
-                           ,{X, X, X, X, X, X, X, X, O, O}
-                           ,{X, X, X, X, X, X, X, X, O, O}                       
+                            {X, X, X, O, O, O, O, O}
+                           ,{X, X, X, O, O, O, O, O}
+                           ,{X, X, X, O, O, O, O, O}
+                           ,{X, X, X, O, O, O, O, O}
+                           ,{X, X, X, O, O, O, O, O}
+                           ,{X, X, X, O, O, O, O, O}
+                           ,{X, X, X, O, O, O, O, O}
+                           ,{X, X, X, O, O, O, O, O}
+                           ,{X, X, X, X, X, X, X, X}
+                           ,{X, X, X, X, X, X, X, X}                       
         };
         return L;
     }
@@ -605,16 +616,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{O, O, O, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}                        
+                            {X, X, X}
+                           ,{X, X, X}
+                           ,{O, O, O}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}                        
         };
         return L;
     }
@@ -641,16 +652,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                            {X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}
-                           ,{X, X, X, O, O}                       
+                            {X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}
+                           ,{X, X, X}                       
                         };
         return L;
     }
