@@ -516,16 +516,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-                             {O, O, X, X, X, X, X, O, O}
-                            ,{O, X, X, X, X, X, X, X, O}
-                            ,{X, X, X, O, O, O, X, X, X}
-                            ,{X, X, O, O, O, O, O, X, X}
-                            ,{X, X, O, O, O, O, O, X, X}
-                            ,{X, X, O, O, X, O, O, X, X}
-                            ,{X, X, O, O, O, X, O, X, X}
-                            ,{X, X, X, O, O, O, X, X, X}
-                            ,{O, X, X, X, X, X, X, X, O}
-                            ,{O, O, X, X, X, X, X, O, X}
+                             {O, O, O, X, X, X, X, O, O, O}
+                            ,{O, X, X, X, X, X, X, X, X, O}
+                            ,{X, X, X, O, O, O, O, X, X, X}
+                            ,{X, X, O, O, O, O, O, O, X, X}
+                            ,{X, X, O, O, O, O, O, O, X, X}
+                            ,{X, X, O, O, O, O, O, O, X, X}
+                            ,{X, X, O, O, O, X, X, O, X, X}
+                            ,{X, X, X, O, O, O, X, X, X, X}
+                            ,{O, X, X, X, X, X, X, X, X, O}
+                            ,{O, O, O, X, X, X, X, O, X, X}
         };
         return L;
     }
@@ -534,7 +534,16 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-            {X}
+                            {X, X, X, X, X, X, O,}
+                           ,{X, X, X, X, X, X, X,}
+                           ,{X, X, O, O, O, X, X,}
+                           ,{X, X, O, O, O, X, X,}
+                           ,{X, X, X, X, X, X, X,}
+                           ,{X, X, X, X, X, X, O,}
+                           ,{X, X, X, X, O, O, O,}
+                           ,{X, X, O, X, X, O, O,}
+                           ,{X, X, O, O, X, X, O,}
+                           ,{X, X, O, O, O, X, X,}
         };
         return L;
     }
