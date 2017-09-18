@@ -9,23 +9,29 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        
+        /* see how unicode char look like
         int newLine = 0;
-        for (int i = 9600; i < 9999; i++) {
+        final int lineSize = 0x100;
+        final int startChar = 0x2000;
+        final int endChar = 0x6fff;
+        System.out.print(Integer.toHexString(startChar) + ": ");
+        for (int i = startChar; i < endChar; i++) {
             if (true) {
                 newLine++;
-                if (newLine == 200) {
-                    System.out.println("");
+                if (newLine ==  lineSize) {
+                    System.out.println();
+                    System.out.print(Integer.toHexString(i+1) + ": ");
                     newLine = 0;
                 }
                 System.out.print((char) i);
             }
         }
+        */
+        System.out.println();
+
+        print("ABCDEFGHIJKLMNOPQRSTUVWXYZÅ", '\u2587', '\u2581');
         System.out.println("");
-        
-        print("ABCDEFGHIJKLMNOPQRSTUVWXYZ", '\u2591', '\u2592');
-        System.out.println("");
-        print("abcdefghijklmnopqrstuvwxyz", '\u2591', '\u2592');
+        print("abcdefghijklmnopqrstuvwxyz", '\u2581', '\u2587');
         do {
             try {
                 //currently its only support few letters [space], A B C D E,... if you add any other letter will have char=0 [Space] instead
