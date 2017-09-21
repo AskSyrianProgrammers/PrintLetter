@@ -552,8 +552,17 @@ public class PrintLetter {
 
         boolean O = false, X = true;
         boolean L[][] = {
-            {X}
-        };
+                            {O, X, X, X, X, X, O,}
+                           ,{X, X, X, X, X, X, X,}
+                           ,{X, X, O, O, O, X, X,}
+                           ,{X, X, O, O, O, O, O,}
+                           ,{X, X, X, X, X, X, O,}
+                           ,{O, X, X, X, X, X, X,}
+                           ,{O, O, O, O, O, X, X,}
+                           ,{X, X, O, O, O, X, X,}
+                           ,{X, X, X, X, X, X, X,}
+                           ,{O, X, X, X, X, X, O,}
+                        };
         return L;
     }
 
