@@ -4,29 +4,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
-        /* see how unicode char look like
-        int newLine = 0;
-        final int lineSize = 0x100;
-        final int startChar = 0x2000;
-        final int endChar = 0x6fff;
-        System.out.print(Integer.toHexString(startChar) + ": ");
-        for (int i = startChar; i < endChar; i++) {
-            if (true) {
-                newLine++;
-                if (newLine ==  lineSize) {
-                    System.out.println();
-                    System.out.print(Integer.toHexString(i+1) + ": ");
-                    newLine = 0;
-                }
-                System.out.print((char) i);
-            }
-        }
-        */
         System.out.println();
 
         print("ABCDEFGHIJKLMNOPQRSTUVWXYZÅ", '\u2587', '\u2581');
@@ -41,9 +20,9 @@ public class Main {
                 Scanner sc = new Scanner(System.in);
                 
                 System.out.print(">");
-                String word = "";//sc.nextLine();
+                String word = sc.nextLine();
                 if (word.equals("exit")) {
-                    System.exit(0);
+                    break;
                 }
                 //print the word using '#'
                 //String word = "ABCDEFGHIiJKLMNOPQRSTUVWXYZ";
@@ -57,7 +36,8 @@ public class Main {
                 System.out.println(e);
             }
             //TODO: change the condition until command exit
-        } while (false);
+        } while (true);
+        System.out.println("Exit");
 
     }
 
